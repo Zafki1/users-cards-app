@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(16, 185, 129, 0.08), transparent 32rem),
+    #f8fafc;
+}
+
+button,
+a,
+input,
+select {
+  transition:
+    background-color 120ms ease,
+    border-color 120ms ease,
+    color 120ms ease,
+    box-shadow 120ms ease,
+    opacity 120ms ease;
+}
+
+@layer components {
+  .panel {
+    @apply rounded-lg border border-slate-200 bg-white shadow-sm;
+  }
+
+  .form-section {
+    @apply rounded-lg border border-slate-200 bg-white p-5 shadow-sm;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06), 0 12px 32px rgba(15, 23, 42, 0.04);
+  }
+
+  .form-section-header {
+    @apply flex items-center justify-between gap-4 border-b border-slate-200 pb-4;
+  }
+
+  .section-title {
+    @apply flex items-center gap-3;
+  }
+
+  .section-icon {
+    @apply flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-emerald-50 text-emerald-700 ring-1 ring-emerald-100;
+  }
+
+  .section-icon-blue {
+    @apply bg-sky-50 text-sky-700 ring-sky-100;
+  }
+
+  .input-field {
+    @apply w-full rounded-md border border-slate-300 bg-white px-3 py-2.5 text-sm outline-none placeholder:text-slate-400 focus:border-emerald-600 focus:ring-2 focus:ring-emerald-100 disabled:cursor-not-allowed disabled:bg-slate-100 disabled:text-slate-500;
+  }
+
+  .input-field.with-icon {
+    @apply pl-10;
+  }
+
+  .input-shell {
+    @apply relative;
+  }
+
+  .input-icon {
+    @apply pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-400;
+  }
+
+  .field {
+    @apply space-y-1;
+  }
+
+  .field > span {
+    @apply text-sm font-medium text-slate-700;
+  }
+
+  .field small {
+    @apply block text-sm text-red-600;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-md bg-emerald-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-70;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-md border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100;
+  }
+
+  .btn-soft {
+    @apply inline-flex items-center justify-center gap-2 rounded-md border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm font-medium text-emerald-700 hover:bg-emerald-100 disabled:cursor-not-allowed disabled:opacity-70;
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 rounded-md bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700;
+  }
+
+  .icon-button {
+    @apply inline-flex h-9 w-9 items-center justify-center rounded-md border border-slate-200 text-slate-600 hover:bg-slate-100;
+  }
+
+  .icon-button-danger {
+    @apply inline-flex h-9 w-9 items-center justify-center rounded-md border border-red-200 text-red-600 hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-40;
+  }
+
+  .table-head {
+    @apply px-4 py-3 text-left text-sm font-semibold text-slate-700;
+  }
+
+  .alert-error {
+    @apply rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700;
+  }
+
+  .modal-backdrop {
+    @apply fixed inset-0 z-40 flex items-center justify-center bg-slate-950/40 p-4;
+  }
+
+  .modal-panel {
+    @apply w-full max-w-md rounded-lg border border-slate-200 bg-white p-5 shadow-xl;
+  }
+
+  .detail-tile {
+    @apply rounded-lg border border-slate-200 bg-slate-50 p-4;
+  }
+
+  .detail-tile span {
+    @apply block text-sm text-slate-500;
+  }
+
+  .detail-tile strong {
+    @apply mt-1 block text-base text-slate-900;
+  }
+}
+

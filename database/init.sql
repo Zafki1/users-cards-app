@@ -1,0 +1,49 @@
+IF DB_ID(N'UsersCardsApp') IS NULL
+BEGIN
+    CREATE DATABASE UsersCardsApp;
+END
+GO
+
+USE UsersCardsApp;
+GO
+
+IF OBJECT_ID(N'dbo.Cards', N'U') IS NOT NULL
+BEGIN
+    DROP TABLE dbo.Cards;
+END
+GO
+
+IF OBJECT_ID(N'dbo.Users', N'U') IS NOT NULL
+BEGIN
+    DROP TABLE dbo.Users;
+END
+GO
+
+CREATE TABLE dbo.Users (
+    Id INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    FullName NVARCHAR(255) NOT NULL,
+    BirthDate DATE NOT NULL,
+    WorkPlace NVARCHAR(255) NULL,
+    CreatedAt DATETIME2 NOT NULL CONSTRAINT DF_Users_CreatedAt DEFAULT SYSUTCDATETIME(),
+    UpdatedAt DATETIME2 NULL
+);
+GO
+
+CREATE TABLE dbo.Cards (
+    Id INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    UserId INT NOT NULL,
+    AccountNumber NVARCHAR(50) NOT NULL,
+    OwnerNameLatin NVARCHAR(255) NOT NULL,
+    ExpirationDate DATE NOT NULL,
+    Cvc NVARCHAR(4) NOT NULL,
+    CreatedAt DATETIME2 NOT NULL CONSTRAINT DF_Cards_CreatedAt DEFAULT SYSUTCDATETIME(),
+    UpdatedAt DATETIME2 NULL,
+    CONSTRAINT FK_Cards_Users FOREIGN KEY (UserId)
+        REFERENCES dbo.Users(Id)
+        ON DELETE CASCADE
+);
+GO
+
+CREATE INDEX IX_Cards_UserId ON dbo.Cards(UserId);
+GO
+
